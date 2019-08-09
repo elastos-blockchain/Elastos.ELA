@@ -353,6 +353,15 @@ func (sm *SyncManager) handleBlockMsg(bmsg *blockMsg) {
 	// If we didn't ask for this block then the peer is misbehaving.
 	blockHash := bmsg.block.Block.Hash()
 
+	if sm.current() {
+		for _, t := range bmsg.block.Transactions {
+			if t.TxType == types.InactiveArbitrators {
+				log.Warn("invalid block with inactive arbitrators")
+				return
+			}
+		}
+	}
+
 	// Remove block from request maps. Either chain will know about it and
 	// so we shouldn't have any more instances of trying to fetch it, or we
 	// will fail the insert and thus we'll retry next time we get an inv.
