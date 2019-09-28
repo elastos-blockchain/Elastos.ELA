@@ -41,7 +41,7 @@ const (
 func StartRPCServer() {
 	mainMux = make(map[string]func(Params) map[string]interface{})
 
-	mainMux["setloglevel"] = SetLogLevel
+	//mainMux["setloglevel"] = SetLogLevel
 	mainMux["getinfo"] = GetInfo
 	mainMux["getblock"] = GetBlockByHash
 	mainMux["getconfirmbyheight"] = GetConfirmByHeight
@@ -64,13 +64,13 @@ func StartRPCServer() {
 	mainMux["getamountbyinputs"] = GetAmountByInputs
 	mainMux["getreceivedbyaddress"] = GetReceivedByAddress
 	// aux interfaces
-	mainMux["help"] = AuxHelp
-	mainMux["submitauxblock"] = SubmitAuxBlock
-	mainMux["createauxblock"] = CreateAuxBlock
+	//mainMux["help"] = AuxHelp
+	//mainMux["submitauxblock"] = SubmitAuxBlock
+	//mainMux["createauxblock"] = CreateAuxBlock
 	// mining interfaces
 	mainMux["getmininginfo"] = GetMiningInfo
-	mainMux["togglemining"] = ToggleMining
-	mainMux["discretemining"] = DiscreteMining
+	//mainMux["togglemining"] = ToggleMining
+	//mainMux["discretemining"] = DiscreteMining
 	// vote interfaces
 	mainMux["listproducers"] = ListProducers
 	mainMux["producerstatus"] = ProducerStatus
